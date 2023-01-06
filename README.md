@@ -1,4 +1,4 @@
-# Englishing
+# Wordy Passwords
 
 This is a nonsense project trying to make passwords with words.
 
