@@ -25,6 +25,18 @@ $(build_dir)/%.wds: $(build_dir)/book_ids $(book_texts)
 $(dist_dir)/words: $(build_dir)/book_ids $(book_words) | $(dist_dir)
 	cat $(book_words) | sort -u > $@
 
+$(dist_dir)/wiki.txt:
+	curl -s https://raw.githubusercontent.com/dropbox/zxcvbn/master/data/english_wikipedia.txt \
+		| grep -oE '^[a-z]+\b' \
+		> $@ \
+		&& wc -l $@
+
+$(dist_dir)/wiki-30k.txt: $(dist_dir)/wiki.txt
+	head -n 30000 $^ > $@
+
+$(dist_dir)/wiki-50k.txt: $(dist_dir)/wiki.txt
+	head -n 50000 $^ > $@
+
 passwd: $(dist_dir)/words
 	@shuf -n4 $(dist_dir)/words | paste -sd- -
 
