@@ -5,11 +5,11 @@ This is a nonsense project trying to make passwords with words.
 The whole thing is obsoleted with the following Linux command:
 
 ```sh
-grep -oP '[a-z]{3,}' /usr/share/dict/words | shuf -n4 | paste -sd-
+grep -E '^[a-z]{3,}$' /usr/share/dict/words | shuf -n4 | paste -sd- -
 # forearm-heehawed-eggshell-skylines
 ```
 
-- `grep -oP '[a-z]{3,}' /usr/share/dict/words` filter for words 3 lowercase letters or more.
+- `grep -E '^[a-z]{3,}$' /usr/share/dict/words` filter for words 3 lowercase letters or more.
 - `shuf -n4` get 4 of them randomly.
 - `paste -sd-` join the lines together with dashes.
 
