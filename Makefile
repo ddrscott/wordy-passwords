@@ -26,7 +26,7 @@ $(dist_dir)/words: $(build_dir)/book_ids $(book_words) | $(dist_dir)
 	cat $(book_words) | sort -u > $@
 
 passwd: $(dist_dir)/words
-	@shuf -n4 $(dist_dir)/words | paste -sd-
+	@shuf -n4 $(dist_dir)/words | paste -sd- -
 
 .PRECIOUS: $(build_dir)/%.txt
 .DEFAULT_GOAL := $(dist_dir)/words
