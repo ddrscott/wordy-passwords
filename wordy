@@ -1,0 +1,2 @@
+#!/bin/sh
+shuf -n4 ./dist/words | paste -sd- -
